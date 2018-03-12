@@ -704,7 +704,7 @@ class Group_of_Markov_Models_1(Module, persistent.Persistent):
             if type(test_ids) == str:
                 if test_ids == 'all':
                     # If all was specified, create a range with all of them
-                    test_ids = range(0,len(self.get_markov_models()))
+                    test_models_ids = range(0,len(self.get_markov_models()))
                 elif ',' in test_ids:
                     test_models_ids = map(int, test_ids.split(','))
                 else:
