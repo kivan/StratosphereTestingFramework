@@ -582,6 +582,7 @@ class Group_of_Markov_Models_1(Module, persistent.Persistent):
         errors['TN'] = 0.0
         errors['FN'] = 0.0
         errors['FP'] = 0.0
+        test_label_positive = ""
         # So we can work with multiple positives and negative labels
         if 'Botnet' in train_label or 'Malware' in train_label:
             train_label_positive = True
@@ -591,6 +592,8 @@ class Group_of_Markov_Models_1(Module, persistent.Persistent):
             test_label_positive = True
         elif 'Normal' in test_label:
             test_label_positive = False
+        if type(test_label_positive) != bool:
+            return errors
 
         if train_label_positive and test_label_positive:
             errors['TP'] += 1
